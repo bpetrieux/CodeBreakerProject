@@ -4,32 +4,31 @@ let attempt = document.getElementById('attempt');
 function guess() {
     let input = document.getElementById('user-guess');
     //add functionality to guess function here
-    if (setHiddenFields() == ''){
+    if (answer.value == '' || attempt.value == ''){
     	setHiddenFields();
-    	validateInput();
     }
+    if (!validateInput(input.value)){
+    	return;
+    }
+    attempt++;
 }
 
 //implement new functions here
 function setHiddenFields(){
-	attempt = 0;
-	answer = Math.floor((Math.random())*1000);
-	answer = answer.toString();
-
-	while (answer.length<4){
-		var zero = '0';
-		answer = zero+answer;
+	answer.value = Math.floor((Math.random())*1000).toString();
+	while (answer.value.length !<4){
+		answer = "0"+answer.value;
 	}
-	console.log(answer);
+	attempt.value = "0";
 }
 function setMessage(message){
 	$( "#answer" ).html(message);
 }
 
-function validateInput(userguess){
-	if (userguess.length=4){
-		return true
-	} else {
+function validateInput(input){
+	if (input.length !=4){
 		setMessage('Guesses must be exactly 4 characters long.');
+		return false;
 	}
+	return true;
 }
