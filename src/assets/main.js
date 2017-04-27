@@ -4,25 +4,25 @@ let attempt = document.getElementById('attempt');
 function guess() {
     let input = document.getElementById('user-guess');
     //add functionality to guess function here
-    if (answer.value == '' || attempt.value == ''){
+    if (answer == '' || attempt == ''){
     	setHiddenFields();
     }
-    if (!validateInput(input.value)){
+    if (!validateInput(input)){
     	return;
     }
-    attempt.value++;
+    attempt++;
 }
 
 //implement new functions here
 function setHiddenFields(){
-	answer.value = Math.floor((Math.random())*1000).toString();
-	while (answer.value.length !<4){
-		answer = "0"+answer.value;
+	answer = Math.floor((Math.random())*1000).toString();
+	while (answer.length <4){
+		answer = "0"+answer;
 	}
-	attempt.value = "0";
+	attempt = "0";
 }
 function setMessage(message){
-	$( "#answer" ).html(message);
+	let answer = document.getElementById('answer').value;
 }
 
 function validateInput(input){
@@ -32,3 +32,4 @@ function validateInput(input){
 	}
 	return true;
 }
+
