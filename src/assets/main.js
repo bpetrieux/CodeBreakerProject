@@ -13,7 +13,7 @@ function guess() {
 //implement new functions here
 function setHiddenFields(){
 	attempt = 0;
-	let answer = Math.floor((Math.random())*1000);
+	answer = Math.floor((Math.random())*1000);
 	answer = answer.toString();
 
 	while (answer.length<4){
